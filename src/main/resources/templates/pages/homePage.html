@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/homePage.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>MyHomePage</h1>
+    <div th:each="category : ${categories}">
+        <br>
+        <a th:href="@{products/category/{id} (id = ${category.id})}" th:text="${category.name}"></a>
+    </div>
+    <br/>
+   <a href="products">Products</a>
+</body>
+</html>

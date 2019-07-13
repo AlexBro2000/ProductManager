@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/products.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Products</h1>
+    <table>
+        <div th:each="product : ${products}">
+            <p th:text="${product.name}"></p>
+            <p th:text="${product.category.name}"></p>
+            <a th:href="@{products/remove/{id} (id = ${product.id})}">Remove</a>
+        </div>
+    </table>
+    <form method="post" action="products">
+        <input type="text" placeholder="Name" name="name">
+        <select name="category.id" title="Category">
+            <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
+        </select>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
+
+
