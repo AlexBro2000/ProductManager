@@ -1,6 +1,7 @@
 package com.example.productmanager.model.service.impl;
 
 import com.example.productmanager.model.dao.ProductDao;
+import com.example.productmanager.model.dao.ProductRepository;
 import com.example.productmanager.model.entity.Product;
 import com.example.productmanager.model.service.ProductService;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import java.util.List;
 public class DefaultProductService implements ProductService {
 
     @Resource
+    private ProductRepository productRepository;
+    @Resource
     private ProductDao productDao;
 
     @Override
@@ -21,16 +24,16 @@ public class DefaultProductService implements ProductService {
 
     @Override
     public List<Product> getAllByCategoryId(Long categoryId) {
-        return productDao.findAllByCategoryId(categoryId);
+        return productDao.findAllByCategory(categoryId);
     }
 
     @Override
     public void add(Product product) {
-        productDao.save(product);
+        productRepository.save(product);
     }
 
     @Override
     public void delete(Long id) {
-        productDao.deleteById(id);
+        productRepository.deleteById(id);
     }
 }

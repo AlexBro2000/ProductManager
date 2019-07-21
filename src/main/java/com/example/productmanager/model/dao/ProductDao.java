@@ -1,11 +1,16 @@
 package com.example.productmanager.model.dao;
 
 import com.example.productmanager.model.entity.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ProductDao extends JpaRepository<Product, Long> {
+public interface ProductDao {
 
-    List<Product> findAllByCategoryId(Long categoryId);
+     List<Product> findAll();
+
+     List<Product> findAllByCategory(Long categoryId);
+
+     void add(Product product);
+
+     void delete(Long id);
 }
